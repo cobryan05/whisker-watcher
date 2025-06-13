@@ -1,18 +1,14 @@
 import uvicorn
-import mediamtx_client
 
 from .manager import Manager
 from .web import WebApp
 
 # Defining the host is optional and defaults to http://localhost:9997
 # See configuration.py for a list of all supported configuration parameters.
-app_name = "RTSP Relay/Buffer Server"
-mediamtx_conf = mediamtx_client.Configuration(host="http://localhost:9997")
-api_client = mediamtx_client.ApiClient(mediamtx_conf)
-
-manager = Manager(api_client)
-web_app = WebApp(manager=manager, app_name=app_name)
-app_port = 8000
+app_name = "Inference Server"
+app_port = 8001
+manager = Manager()
+web_app = WebApp(app_name=app_name, manager=manager)
 
 # Get the uvicorn app
 app = web_app.app()
