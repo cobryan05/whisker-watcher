@@ -1,0 +1,6 @@
+services:
+  whiskerwatcher:
+    volumes:
+      # Mount host Claude credentials so you don't need to re-auth after rebuilds.
+      # Copy this file to docker-compose.override.yml (gitignored) and adjust the path if needed.
+      - ${HOME}/.claude:/home/appuser/.claude
